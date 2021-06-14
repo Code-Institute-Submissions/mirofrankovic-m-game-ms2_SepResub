@@ -1,0 +1,25 @@
+@import url('https://fonts.googleapis.com/css2?family=Goldman:wght@400;700&family=Roboto+Mono:wght@400&display=swap');
+
+
+/* ------------------- Global styles ------------------- */
+
+body {
+    font-family: 'Goldman', sans-serif;
+    background-color: #292929;
+}
+
+
+/* ------------------- Main menu section ------------------- */
+
+#main-menu-section {
+    background: url(../images/amber.jpg) center center no-repeat;
+    height: 100vh;
+    background-size: cover;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
