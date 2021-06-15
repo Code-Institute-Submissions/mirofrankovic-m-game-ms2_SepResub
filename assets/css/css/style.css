@@ -12,7 +12,7 @@ body {
 /* ------------------- Main menu section ------------------- */
 
 #main-menu-section {
-    background: url(../images/amber.jpg) center center no-repeat;
+    background: url(/assets/images/amberr.jpg) center center no-repeat;
     height: 100vh;
     background-size: cover;
     -webkit-background-size: cover;
@@ -22,4 +22,73 @@ body {
     align-items: center;
     justify-content: center;
     position: relative;
+}
+
+
+.opaque-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background-color: #0000004d;
+}
+
+h1 {
+    color:#000;
+    text-shadow: #ffffff -1px 0px, #ffffff 0px 1px, #ffffff 1px 0px, #ffffff 0px -1px;
+    position: absolute;
+    font-size: 2rem;
+    text-align: center;
+    top:15%;
+    left:15%;
+}
+
+h1 li {
+    list-style-type: none;
+}
+
+#volume-up-menu {
+    cursor: pointer;
+    position: absolute;
+    right: 10px;
+    z-index: 1000;
+}
+
+#main-image img {
+    width: 100%;
+    height: auto;
+
+  }
+
+#main-menu {
+    color: white;
+    background-color: #ffd500;
+    position: relative;
+}
+
+.btn-block {
+    color: white;
+    width: 65%;
+    font-weight: 700;
+    font-size: 28px;
+    background-color: #008adb;
+    border: 4px solid transparent;
+}
+
+#play {
+    font-size: 38px;
+    background-color: #e3000b;
+    border: 4px solid transparent;
+}
+
+#play:hover,
+.btn-block:hover {
+    color: #000000;
+    text-shadow: #ffffff -1px 0px, #ffffff 0px 1px, #ffffff 1px 0px, #ffffff 0px -1px;
+    border: 4px solid #ffffff;
+}
+
+.options{
+    text-align: center;
 }
