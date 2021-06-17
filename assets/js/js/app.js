@@ -2,17 +2,41 @@
    * Array with image source links to be retrieved and inserted into the HTML when cards are created
    */
 
-const myCard =[];
+const myCard =[
+   "img1.jpg",
+   "img2.jpg",
+   "img3.jpg",
+   "img4.jpg",
+   "img5.jpg",
+   "img6.jpg",
+   "img7.jpg",
+   "img8.jpg",
+   "img9.jpg",
+   "img10.jpg",
+   "img11.jpg",
+   "img12.jpg"
+];
 
 // Main menu section
 const mainMenuSection = document.getElementById("main-menu-section");
+
 
 
 // Game arena section
 
 
 
-// Game level modal
+// Game my level modal for easy and hard
+
+const easyButton = document.getElementById("easy");
+easyButton.addEventListener("click", function(){
+   level("easy");
+});
+
+const hardButton = document.getElementById("hard");
+hardButton.addEventListener("click", function(){
+   level("hard");
+});
 
 
 
@@ -128,3 +152,7 @@ const mainMenuSection = document.getElementById("main-menu-section");
 
 // Save score to local storage
 // Show score in highscores modal
+
+
+
+// console.log("hallo there it is miro");
