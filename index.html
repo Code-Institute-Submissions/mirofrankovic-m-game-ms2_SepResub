@@ -28,7 +28,6 @@
                                 Let's play!
                             </strong>
                         </h1>
-                        <div class="click" id="volume-up-menu"><i class="fas fa-volume-up fa-2x"></i></div>
                         <div class="row">
                             <div class="offset-1 col-5">
                                 <div id="main-image"><img src="/assets/images/pexeso.jpg" alt="Title image for game" /></div>
@@ -45,23 +44,42 @@
             </div>
         </div>  
      </section>
+     <!-- My Game section -->
+     <section id="game-section">
+        <div class="container mt-5">
+            <div class="row">
+                <div class="col-12 offset-md-3 col-md-6 offset-lg-4 col-lg-4">
+                    <div id="my-game">
+                        <div>
+                            <p class="float-left click" id="exit">Quit <i class="fas fa-door-open"></i></p>
+                        </div>
+                        <p id="points" class="text-center"><span class="pl-1">Points:</span><span class="pr-1"></span></p>
+                        <p id="level" class="float-left"><span class="pl-1">Level:</span><span class="pr-1"></span></p>
+                        <p id="time" class="float-right"><span class="pl-1">Time:</span><span class="pr-1"></span></p>
+                        <div id="my-pexeso" class="clearfix text-center"></div>
+                        <p id="counter" class="text-center mt-3"><span class="pl-1">Turn counter:</span><span class="pr-1"></span></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
       <!-- Game my level modal -->
       <div class="modal fade" id="level-modal" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-body mx-auto">
                     <h2>Select difficulty:</h2>
-                    <div class="level d-inline-block text-center click" id="easy" data-dismiss="modal">
+                    <div class="level d-inline-block text-center click" id="easy" data-bs-dismiss="modal">
                         <h3 class="mt-4">Easy</h3>
                         <p>6 cards</p>
                     </div>
-                    <div class="level d-inline-block text-center click" id="hard" data-dismiss="modal">
+                    <div class="level d-inline-block text-center click" id="hard" data-bs-dismiss="modal">
                         <h3 class="mt-4">Hard</h3>
                         <p>12 cards</p>
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-danger click" data-dismiss="modal">Cancel</button>
+                    <button type="button" class="btn btn-danger click" data-bs-dismiss="modal">Cancel</button>
                 </div>
             </div>
         </div>
@@ -94,7 +112,7 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-danger click" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-danger click" data-bs-dismiss="modal">Close</button>
                 </div>
             </div>
         </div>
@@ -134,7 +152,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-warning mr-auto click" id="clear">Clear scores</button>
-                    <button type="button" class="btn btn-danger click" id="close-high" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-danger click" id="close-high" data-bs-dismiss="modal">Close</button>
                 </div>
             </div>
         </div>
@@ -185,7 +203,7 @@
                     </ul>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-danger click" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-danger click" data-bs-dismiss="modal">Close</button>
                 </div>
             </div>
         </div>

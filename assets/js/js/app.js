@@ -22,7 +22,9 @@ const mainMenuSection = document.getElementById("main-menu-section");
 
 
 
-// Game arena section
+// Game display section
+const displayGame = document.getElementById("game-section");
+const displayPexeso = document.getElementById("my-pexeso");
 
 
 
