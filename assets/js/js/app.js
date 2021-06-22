@@ -25,6 +25,7 @@ const mainMenuSection = document.getElementById("main-menu-section");
 // Game display section
 const displayGame = document.getElementById("display-game");
 const myPexeso = document.getElementById("my-pexeso");
+const levelGame = document.querySelector("#level span:nth-child(2)");
 
 
 
@@ -91,12 +92,32 @@ function startPexesoGame() {
 }
 
 
-// Create cards in game arena according to the selected level
+// Create cards in game pexeso according to the selected level
 // Hide main menu section and show game arena section
 // Set and display points, level, timer, turn counter in their starting values
 // Call functions to shuffle cards, start timer and active score system
 
 let selectLevel;
+let pairs;
+
+function chooseLevel(playerLevel){
+   let cards = "";
+   let cardNum = 12;
+
+   if (playerLevel === "easy"){
+      selectLevel= "easy";
+      cardNum = 5;
+      levelGame.innerHTML=selectLevel;
+      pairs = 3;
+   }else if (playerLevel === "hard"){
+      selectLevel = "hard";
+      cardNum = 11;
+      levelGame.innerHTML=selectLevel;
+      pairs = 6;
+
+   }
+
+}
 
 
 
