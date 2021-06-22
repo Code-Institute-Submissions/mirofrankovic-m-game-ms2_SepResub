@@ -92,3 +92,39 @@ h1 li {
 .options{
     text-align: center;
 }
+
+/* Easy and hard section */
+
+.modal-content{
+    background-color: #ddce49;
+    color: black;
+}
+
+.level {
+    width: 125px;
+    height: 125px;
+    margin: 10px;
+    color: #ffffff;
+    cursor: pointer;
+}
+
+.level:hover {
+    color: black;
+}
+
+#easy {
+    background-color: #55699a;
+    border: 3px solid transparent;
+}
+
+#hard {
+    background-color:#f73918 ;
+    border: 3px solid transparent;
+}
+
+#easy:hover,
+#hard:hover {
+    border: 3px solid #ffffff;
+}
+
+

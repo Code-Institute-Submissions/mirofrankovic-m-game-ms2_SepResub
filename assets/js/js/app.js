@@ -23,8 +23,8 @@ const mainMenuSection = document.getElementById("main-menu-section");
 
 
 // Game display section
-const displayGame = document.getElementById("game-section");
-const displayPexeso = document.getElementById("my-pexeso");
+const displayGame = document.getElementById("display-game");
+const myPexeso = document.getElementById("my-pexeso");
 
 
 
@@ -85,9 +85,10 @@ hardButton.addEventListener("click", function(){
 
 // ----------------------- Game start
 
-
-
-
+function startPexesoGame() {
+   mainMenuSection.style.display = "flex";
+   displayGame.style.display = "none";
+}
 
 
 // Create cards in game arena according to the selected level
@@ -95,6 +96,7 @@ hardButton.addEventListener("click", function(){
 // Set and display points, level, timer, turn counter in their starting values
 // Call functions to shuffle cards, start timer and active score system
 
+let selectLevel;
 
 
 
