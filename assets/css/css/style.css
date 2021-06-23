@@ -12,13 +12,13 @@ body {
 /* ------------------- Main menu section ------------------- */
 
 #main-menu-section {
-    background: url(/assets/images/amberr.jpg) center center no-repeat;
+    background: url(../../images/amber.jpg) center center no-repeat;
     height: 100vh;
     background-size: cover;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
-    display: flex;
+    display: flex;   /*none*/
     align-items: center;
     justify-content: center;
     position: relative;
@@ -118,7 +118,7 @@ h1 li {
 }
 
 #hard {
-    background-color:#f73918 ;
+    background-color:#f73918;
     border: 3px solid transparent;
 }
 
@@ -126,5 +126,46 @@ h1 li {
 #hard:hover {
     border: 3px solid #ffffff;
 }
+
+
+/* display my pexeso game in game board */
+
+ #display-game{
+     background-color: #ddce49;
+ } 
+
+
+
+
+/* my cards */
+
+
+.card {
+    width: 23%;
+    height: 115px;
+    margin-left: 2px;
+    margin-right: 3px;
+    border: 3px solid  #ffffff;
+    background-color: #55699a;
+    cursor: pointer;
+    display: inline-block;
+}
+
+.card:hover {
+    border: 3px solid #f73918;
+}
+
+.cardA {
+    width: 23%;
+    height: 115px;
+    margin-left: 2px;
+    margin-right: 3px;
+    border: 3px solid  #f73918;
+    cursor: default;
+    pointer-events: none;
+    display: inline-block;
+}
+
+
 
 

@@ -23,9 +23,9 @@ const mainMenuSection = document.getElementById("main-menu-section");
 
 
 // Game display section
-const displayGame = document.getElementById("display-game");
-const myPexeso = document.getElementById("my-pexeso");
-const levelGame = document.querySelector("#level span:nth-child(2)");
+const displayAllGame = document.getElementById("display-game");
+const myPexesoCards = document.getElementById("my-pexeso");
+const levelGame = document.querySelector("#chooseLevel span:nth-child(2)");
 
 
 
@@ -33,12 +33,12 @@ const levelGame = document.querySelector("#level span:nth-child(2)");
 
 const easyButton = document.getElementById("easy");
 easyButton.addEventListener("click", function(){
-   level("easy");
+   chooseLevel("easy");
 });
 
 const hardButton = document.getElementById("hard");
 hardButton.addEventListener("click", function(){
-   level("hard");
+   chooseLevel("hard");
 });
 
 
@@ -87,8 +87,8 @@ hardButton.addEventListener("click", function(){
 // ----------------------- Game start
 
 function startPexesoGame() {
-   mainMenuSection.style.display = "flex";
-   displayGame.style.display = "none";
+   mainMenuSection.style.display = "flex"; 
+   displayAllGame.style.display = "none";
 }
 
 
@@ -116,8 +116,15 @@ function chooseLevel(playerLevel){
       pairs = 6;
 
    }
+   let i;
+    for (i = 0; i <= cardNum; i++) {
+        cards = `${cards}<div class="card" onclick="reverse(${i})" id="c${i}"></div>`;
+    }
+    console.log(myPexesoCards)
+    myPexesoCards.innerHTML = cards;
 
 }
+
 
 
 
