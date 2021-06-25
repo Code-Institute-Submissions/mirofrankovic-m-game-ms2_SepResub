@@ -23,9 +23,14 @@ const mainMenuSection = document.getElementById("main-menu-section");
 
 
 // Game display section
-const displayAllGame = document.getElementById("display-game");
+const displayGame = document.getElementById("display-game");
 const myPexesoCards = document.getElementById("my-pexeso");
 const levelGame = document.querySelector("#chooseLevel span:nth-child(2)");
+
+
+
+//Create class
+//this.name---->refers to the class
 
 
 
@@ -88,7 +93,7 @@ hardButton.addEventListener("click", function(){
 
 function startPexesoGame() {
    mainMenuSection.style.display = "flex"; 
-   displayAllGame.style.display = "none";
+   displayGame.style.display = "none";
 }
 
 
@@ -122,6 +127,10 @@ function chooseLevel(playerLevel){
     }
     console.log(myPexesoCards)
     myPexesoCards.innerHTML = cards;
+
+    mainMenuSection.style.display = "none"; 
+    displayGame.style.display = "flex";
+   
 
 }
 
