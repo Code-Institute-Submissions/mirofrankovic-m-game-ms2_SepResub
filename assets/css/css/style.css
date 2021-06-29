@@ -148,6 +148,7 @@ h1 li {
     margin-right: 3px;
     border: 3px solid  #ffffff;
     background-color: #55699a;
+    /* background: url(../../images/pexeso.jpg) center center no-repeat; */
     cursor: pointer;
     display: inline-block;
 }

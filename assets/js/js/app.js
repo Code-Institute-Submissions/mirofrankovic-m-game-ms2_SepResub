@@ -4,16 +4,28 @@
 
 const myCard =[
    "img1.jpg",
+   "img1.jpg",
+   "img2.jpg",
    "img2.jpg",
    "img3.jpg",
+   "img3.jpg",
+   "img4.jpg",
    "img4.jpg",
    "img5.jpg",
+   "img5.jpg",
+   "img6.jpg",
    "img6.jpg",
    "img7.jpg",
+   "img7.jpg",
+   "img8.jpg",
    "img8.jpg",
    "img9.jpg",
+   "img9.jpg",
+   "img10.jpg",
    "img10.jpg",
    "img11.jpg",
+   "img11.jpg",
+   "img12.jpg",
    "img12.jpg"
 ];
 
@@ -26,6 +38,7 @@ const mainMenuSection = document.getElementById("main-menu-section");
 const displayGame = document.getElementById("display-game");
 const myPexesoCards = document.getElementById("my-pexeso");
 const levelGame = document.querySelector("#chooseLevel span:nth-child(2)");
+const back = document.getElementById("goBack");
 
 
 
@@ -66,6 +79,9 @@ hardButton.addEventListener("click", function(){
 
 // ----------------------- Buttons
 // Back to main menu buttons
+back.addEventListener("click", function () {
+   startPexesoGame();
+});
 
 
 
@@ -107,18 +123,18 @@ let pairs;
 
 function chooseLevel(playerLevel){
    let cards = "";
-   let cardNum = 12;
+   let cardNum = 15;
 
    if (playerLevel === "easy"){
       selectLevel= "easy";
-      cardNum = 5;
+      cardNum = 7;
       levelGame.innerHTML=selectLevel;
-      pairs = 3;
+      pairs = 4;
    }else if (playerLevel === "hard"){
       selectLevel = "hard";
-      cardNum = 11;
+      cardNum = 15;
       levelGame.innerHTML=selectLevel;
-      pairs = 6;
+      pairs = 8;
 
    }
    let i;
@@ -139,6 +155,10 @@ function chooseLevel(playerLevel){
 
 
 // Shuffle cards before each game
+
+function shuffleImages(){
+
+}
 
 
 
@@ -196,4 +216,4 @@ function chooseLevel(playerLevel){
 
 
 
-// console.log("hallo there it is miro");
+// console.log("hallo there is miro");
