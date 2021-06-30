@@ -3,30 +3,22 @@
    */
 
 const myCard =[
-   "img1.jpg",
-   "img1.jpg",
-   "img2.jpg",
-   "img2.jpg",
-   "img3.jpg",
-   "img3.jpg",
-   "img4.jpg",
-   "img4.jpg",
-   "img5.jpg",
-   "img5.jpg",
-   "img6.jpg",
-   "img6.jpg",
-   "img7.jpg",
-   "img7.jpg",
-   "img8.jpg",
-   "img8.jpg",
-   "img9.jpg",
-   "img9.jpg",
-   "img10.jpg",
-   "img10.jpg",
-   "img11.jpg",
-   "img11.jpg",
-   "img12.jpg",
-   "img12.jpg"
+   "img1px.jpg",
+   "img1px.jpg",
+   "img2px.jpg",
+   "img2px.jpg",
+   "img3px.jpg",
+   "img3px.jpg",
+   "img4px.jpg",
+   "img4px.jpg",
+   "img5px.jpg",
+   "img5px.jpg",
+   "img6px.jpg",
+   "img6px.jpg",
+   "img7px.jpg",
+   "img7px.jpg",
+   "img8px.jpg",
+   "img8px.jpg",    
 ];
 
 // Main menu section
@@ -75,15 +67,11 @@ hardButton.addEventListener("click", function(){
 
 
 
-
-
 // ----------------------- Buttons
 // Back to main menu buttons
 back.addEventListener("click", function () {
    startPexesoGame();
 });
-
-
 
 
 
@@ -146,18 +134,59 @@ function chooseLevel(playerLevel){
 
     mainMenuSection.style.display = "none"; 
     displayGame.style.display = "flex";
+
+
+    shuffleImages();
    
 
 }
 
 
 
-
-
 // Shuffle cards before each game
-
+let shuffImg;
 function shuffleImages(){
+   shuffImg = myCard.slice();
+   let cardNum = 12;
+   if (gameLevel === "easy") {
+      cardNum = 6;
+  } else if (gameLevel === "medium") {
+      cardNum = 10;
+  }
 
+   // for(let i=0;i<shuffImg.length;i++){
+
+   //    let randomNumber = Math.floor(Math.random() * shuffImg.length);
+
+
+   // }
+   let i;
+   let j;
+   let temp;
+   for (i = cardNum; i > 0; i--) {
+       j = Math.floor(Math.random() * (i + 1));
+       temp = shuffImg[i];
+       shuffImg[i] = shuffImg[j];
+       shuffImg[j] = temp;
+   }
+   return shuffImg;
+
+}
+
+
+// Shuffle function from http://stackoverflow.com/a/245097"
+function shuffle(array) {
+   let currentIndex = array.length,
+       temporaryValue, randomIndex;
+
+   while (currentIndex !== 0) {
+       randomIndex = Math.floor(Math.random() * currentIndex);
+       currentIndex -= 1;
+       temporaryValue = array[currentIndex];
+       array[currentIndex] = array[randomIndex];
+       array[randomIndex] = temporaryValue;
+   }
+   return array;
 }
 
 
@@ -172,6 +201,7 @@ function shuffleImages(){
 // Update turn counter with every two cards reversed
 // Call scoring function to add points when 2 cards match and subtract points when don't
 
+ 
 
 
 
