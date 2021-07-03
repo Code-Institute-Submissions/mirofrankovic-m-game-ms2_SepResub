@@ -137,11 +137,8 @@ function chooseLevel(playerLevel){
 
 
     shuffleImages();
-   
 
 }
-
-
 
 // Shuffle cards before each game
 let shuffImg;
@@ -154,12 +151,6 @@ function shuffleImages(){
       cardNum = 10;
   }
 
-   // for(let i=0;i<shuffImg.length;i++){
-
-   //    let randomNumber = Math.floor(Math.random() * shuffImg.length);
-
-
-   // }
    let i;
    let j;
    let temp;
@@ -174,20 +165,42 @@ function shuffleImages(){
 }
 
 
-// Shuffle function from http://stackoverflow.com/a/245097"
-function shuffle(array) {
-   let currentIndex = array.length,
-       temporaryValue, randomIndex;
+// Render Cards on Pexeso Board
 
-   while (currentIndex !== 0) {
-       randomIndex = Math.floor(Math.random() * currentIndex);
-       currentIndex -= 1;
-       temporaryValue = array[currentIndex];
-       array[currentIndex] = array[randomIndex];
-       array[randomIndex] = temporaryValue;
-   }
-   return array;
+ /**
+     * Renders the card element using the image name passed as a parameter
+     * @param {String} pexesoImg 
+     */
+
+function renderCards(pexesoImg){
+   return `<div class="card">
+                    <div class="card-back all-cards">
+                        <img class="card-img" src="../../images/pexesoCard.jpg"  alt="Hidden card">
+                    </div> 
+                    <div class="card-picture all-cards">
+                        <img class="card-value card-img" src="assets/images/${pexesoImg}" alt="Picture card">
+                    </div>
+                </div>`;
+
 }
+
+// Append pexeso Images on boar
+
+function appendCards(){
+
+   const allCards = myCard.concat(myCard);
+
+   const addCard = document.getElementById("my-game");
+
+}
+
+
+//Flipping my cards
+
+function flippingCards(){
+
+}
+
 
 
 
