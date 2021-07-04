@@ -4,25 +4,19 @@
 
 const myCard =[
    "img1px.jpg",
-   "img1px.jpg",
-   "img2px.jpg",
    "img2px.jpg",
    "img3px.jpg",
-   "img3px.jpg",
-   "img4px.jpg",
    "img4px.jpg",
    "img5px.jpg",
-   "img5px.jpg",
-   "img6px.jpg",
    "img6px.jpg",
    "img7px.jpg",
-   "img7px.jpg",
-   "img8px.jpg",
    "img8px.jpg",    
 ];
 
 // Main menu section
 const mainMenuSection = document.getElementById("main-menu-section");
+// const cardsList = [];
+
 
 
 
@@ -31,6 +25,9 @@ const displayGame = document.getElementById("display-game");
 const myPexesoCards = document.getElementById("my-pexeso");
 const levelGame = document.querySelector("#chooseLevel span:nth-child(2)");
 const back = document.getElementById("goBack");
+
+
+const btnColor = document.querySelector('#buttonColor');
 
 
 
@@ -50,6 +47,16 @@ const hardButton = document.getElementById("hard");
 hardButton.addEventListener("click", function(){
    chooseLevel("hard");
 });
+
+
+function random(number) {
+   return Math.floor(Math.random() * (number+1));
+ }
+ 
+ btnColor.onclick = function() {
+   const rndCol = 'rgb(' + random(255) + ',' + random(255) + ',' + random(255) + ')';
+   document.body.style.backgroundColor = rndCol;
+ }
 
 
 
@@ -184,14 +191,23 @@ function renderCards(pexesoImg){
 
 }
 
-// Append pexeso Images on boar
+// Append-insert pexeso Images on boar by clicking on the card
+// Duplicate array
+
+
 
 function appendCards(){
 
-   const allCards = myCard.concat(myCard);
+   let allCards = myCard.concat(myCard);
 
    const addCard = document.getElementById("my-game");
 
+
+   addCard.addEventListener("click",renderCards);
+
+
+
+   renderCards()
 }
 
 

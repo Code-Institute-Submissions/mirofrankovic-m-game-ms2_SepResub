@@ -131,7 +131,7 @@ h1 li {
 /* display my pexeso game in game board */
 
  #display-game{
-     background-color: #ddce49;
+     /* background-color: #ddce49; */
      display:flex;
  } 
 
