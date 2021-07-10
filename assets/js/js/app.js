@@ -134,7 +134,7 @@ function chooseLevel(playerLevel){
    }
    let i;
     for (i = 0; i <= cardNum; i++) {
-        cards = `${cards}<div class="card" onclick="reverse(${i})" id="c${i}"></div>`;
+        cards = `${cards}<div class="card" id="c${i}"></div>`;
     }
     console.log(myPexesoCards)
     myPexesoCards.innerHTML = cards;
@@ -152,9 +152,9 @@ let shuffImg;
 function shuffleImages(){
    shuffImg = myCard.slice();
    let cardNum = 12;
-   if (gameLevel === "easy") {
+   if (selectLevel === "easy") {
       cardNum = 6;
-  } else if (gameLevel === "medium") {
+  } else if (selectLevel === "medium") {
       cardNum = 10;
   }
 
@@ -176,10 +176,10 @@ function shuffleImages(){
 
  /**
      * Renders the card element using the image name passed as a parameter
-     * @param {String} pexesoImg 
+     * @param {String} pexesoImg     //pexesoImg
      */
 
-function renderCards(pexesoImg){
+function renderCards(pexesoImg){                          //myCard?
    return `<div class="card">
                     <div class="card-back all-cards">
                         <img class="card-img" src="../../images/pexesoCard.jpg"  alt="Hidden card">
@@ -192,9 +192,10 @@ function renderCards(pexesoImg){
 }
 
 // Append-insert pexeso Images on boar by clicking on the card
-// Duplicate array
-
-
+// Duplicate elements of an array
+const duplicate = (arr) => {
+	return arr.concat(arr).sort()
+};
 
 function appendCards(){
 
@@ -203,11 +204,11 @@ function appendCards(){
    const addCard = document.getElementById("my-game");
 
 
-   addCard.addEventListener("click",renderCards);
-
-
-
-   renderCards()
+   addCard.addEventListener("click",function() {
+            renderCards()
+   });
+   
+   chooseLevel()    //call function for display cards
 }
 
 
@@ -215,7 +216,18 @@ function appendCards(){
 
 function flippingCards(){
 
+
+   appendCards()
+
 }
+
+// Check if two cards are a match
+const checkMatch = (myCard) => {
+	if (myCard[0] === myCard[1]) {
+  	console.log("it's a match");
+  	return true;
+  }
+};
 
 
 
