@@ -3,7 +3,7 @@
    */
 
 const myCard =[
-   "img1px.jpg",
+   "img1px.jpg", 
    "img2px.jpg",
    "img3px.jpg",
    "img4px.jpg",
@@ -29,12 +29,10 @@ const back = document.getElementById("goBack");
 
 const btnColor = document.querySelector('#buttonColor');
 
-
+// const addCard = document.getElementById("cards-container");  //DOM
 
 //Create class
 //this.name---->refers to the class
-
-
 
 // Game my level modal for easy and hard
 
@@ -47,7 +45,6 @@ const hardButton = document.getElementById("hard");
 hardButton.addEventListener("click", function(){
    chooseLevel("hard");
 });
-
 
 function random(number) {
    return Math.floor(Math.random() * (number+1));
@@ -193,20 +190,38 @@ function renderCards(pexesoImg){                          //myCard?
 
 // Append-insert pexeso Images on boar by clicking on the card
 // Duplicate elements of an array
+//render elements in the browser
+//iterate
+
 const duplicate = (arr) => {
 	return arr.concat(arr).sort()
 };
 
+const addCard = document.getElementById("cards-container");  //DOM
+addCard.addEventListener("click", function(){
+   appendCards()
+
+});
+
+// render
+//iterate
 function appendCards(){
 
-   let allCards = myCard.concat(myCard);
+   const cards = myCard.concat(myCard);  //concatenating the cards as an array
+   
+   cards.forEach(function(thatCard){
+      console.log(thatCard);
 
-   const addCard = document.getElementById("my-game");
+   })
+
+   for (const cards of addCard) {
+      cards.forEach(card => card.addEventListener('click', flippingCards));
+    }
 
 
-   addCard.addEventListener("click",function() {
-            renderCards()
-   });
+   // // addCard.addEventListener("click",function() {
+   // //          renderCards()
+   // });
    
    chooseLevel()    //call function for display cards
 }
@@ -221,7 +236,7 @@ function flippingCards(){
 
 }
 
-// Check if two cards are a match
+// Check if two cards are a match-> comparing two values in array
 const checkMatch = (myCard) => {
 	if (myCard[0] === myCard[1]) {
   	console.log("it's a match");
