@@ -13,12 +13,18 @@ const myCard =[
    "img8px.jpg",    
 ];
 
+
+
+let firstGuess = '';
+let secondGuess = '';
+let count = 0;
+let previousTarget = null;
+let delay = 1200;
+
+
 // Main menu section
 const mainMenuSection = document.getElementById("main-menu-section");
 // const cardsList = [];
-
-
-
 
 // Game display section
 const displayGame = document.getElementById("display-game");
@@ -28,11 +34,6 @@ const back = document.getElementById("goBack");
 
 
 const btnColor = document.querySelector('#buttonColor');
-
-// const addCard = document.getElementById("cards-container");  //DOM
-
-//Create class
-//this.name---->refers to the class
 
 // Game my level modal for easy and hard
 
@@ -151,7 +152,7 @@ function shuffleImages(){
    let cardNum = 12;
    if (selectLevel === "easy") {
       cardNum = 6;
-  } else if (selectLevel === "medium") {
+  } else if (selectLevel === "hard") {
       cardNum = 10;
   }
 
@@ -199,37 +200,38 @@ const duplicate = (arr) => {
 
 const addCard = document.getElementById("cards-container");  //DOM
 addCard.addEventListener("click", function(){
+
+   
    appendCards()
 
 });
 
-// render
-//iterate
-function appendCards(){
+const cards = myCard
+.concat(myCard);  //concatenating the cards as an array
+cards.sort(() => 0.5 - Math.random());
 
-   const cards = myCard.concat(myCard);  //concatenating the cards as an array
-   
-   cards.forEach(function(thatCard){
-      console.log(thatCard);
 
+
+const appendCards = function(){
+
+   cards.forEach(function(card){
+      console.log(card);
    })
-
-   for (const cards of addCard) {
       cards.forEach(card => card.addEventListener('click', flippingCards));
-    }
 
-
-   // // addCard.addEventListener("click",function() {
-   // //          renderCards()
-   // });
-   
    chooseLevel()    //call function for display cards
 }
+
+appendCards()
 
 
 //Flipping my cards
 
+
 function flippingCards(){
+
+   console.log('I was clicked');
+   console.log(this);
 
 
    appendCards()
