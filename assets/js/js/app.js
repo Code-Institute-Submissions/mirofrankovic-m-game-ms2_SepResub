@@ -2,24 +2,20 @@
    * Array with image source links to be retrieved and inserted into the HTML when cards are created
    */
 
-const myCard =[
-   "img1px.jpg", 
+const myCard = [
+   "img1px.jpg",
    "img2px.jpg",
    "img3px.jpg",
    "img4px.jpg",
    "img5px.jpg",
    "img6px.jpg",
    "img7px.jpg",
-   "img8px.jpg",    
+   "img8px.jpg",
 ];
 
 
 
-let firstGuess = '';
-let secondGuess = '';
 let count = 0;
-let previousTarget = null;
-let delay = 1200;
 
 
 // Main menu section
@@ -28,7 +24,7 @@ const mainMenuSection = document.getElementById("main-menu-section");
 
 // Game display section
 const displayGame = document.getElementById("display-game");
-const myPexesoCards = document.getElementById("my-pexeso");
+const cardP = document.getElementById("my-pexeso");
 const levelGame = document.querySelector("#chooseLevel span:nth-child(2)");
 const back = document.getElementById("goBack");
 
@@ -38,38 +34,34 @@ const btnColor = document.querySelector('#buttonColor');
 // Game my level modal for easy and hard
 
 const easyButton = document.getElementById("easy");
-easyButton.addEventListener("click", function(){
+easyButton.addEventListener("click", function () {
    chooseLevel("easy");
 });
 
 const hardButton = document.getElementById("hard");
-hardButton.addEventListener("click", function(){
+hardButton.addEventListener("click", function () {
    chooseLevel("hard");
 });
 
 function random(number) {
-   return Math.floor(Math.random() * (number+1));
- }
- 
- btnColor.onclick = function() {
+   return Math.floor(Math.random() * (number + 1));
+}
+
+btnColor.onclick = function () {
    const rndCol = 'rgb(' + random(255) + ',' + random(255) + ',' + random(255) + ')';
    document.body.style.backgroundColor = rndCol;
- }
+}
 
 
 
 // Highscores modal
-
-
 
 // Game win modal
 
 
 // Times up modal
 
-
 // Clear confirmation modal
-
 
 
 // ----------------------- Buttons
@@ -78,30 +70,10 @@ back.addEventListener("click", function () {
    startPexesoGame();
 });
 
-
-
-// Audio buttons
-
-
-
-
-
-// ----------------------- Audio
-// Audio files
-
-
-
-
-// Volume on/off toggle
-
-
-
-
-
 // ----------------------- Game start
 
 function startPexesoGame() {
-   mainMenuSection.style.display = "flex"; 
+   mainMenuSection.style.display = "flex";
    displayGame.style.display = "none";
 }
 
@@ -114,70 +86,50 @@ function startPexesoGame() {
 let selectLevel;
 let pairs;
 
-function chooseLevel(playerLevel){
+function chooseLevel(playerLevel) {
    let cards = "";
    let cardNum = 15;
 
-   if (playerLevel === "easy"){
-      selectLevel= "easy";
+   if (playerLevel === "easy") {
+      selectLevel = "easy";
       cardNum = 7;
-      levelGame.innerHTML=selectLevel;
+      levelGame.innerHTML = selectLevel;
       pairs = 4;
-   }else if (playerLevel === "hard"){
+   } else if (playerLevel === "hard") {
       selectLevel = "hard";
       cardNum = 15;
-      levelGame.innerHTML=selectLevel;
+      levelGame.innerHTML = selectLevel;
       pairs = 8;
 
    }
-   let i;
-    for (i = 0; i <= cardNum; i++) {
-        cards = `${cards}<div class="card" id="c${i}"></div>`;
-    }
-    console.log(myPexesoCards)
-    myPexesoCards.innerHTML = cards;
 
-    mainMenuSection.style.display = "none"; 
-    displayGame.style.display = "flex";
-
-
-    shuffleImages();
-
-}
-
-// Shuffle cards before each game
-let shuffImg;
-function shuffleImages(){
-   shuffImg = myCard.slice();
-   let cardNum = 12;
-   if (selectLevel === "easy") {
-      cardNum = 6;
-  } else if (selectLevel === "hard") {
-      cardNum = 10;
-  }
+   //shuffle images above
+   shuffleImages();
 
    let i;
-   let j;
-   let temp;
-   for (i = cardNum; i > 0; i--) {
-       j = Math.floor(Math.random() * (i + 1));
-       temp = shuffImg[i];
-       shuffImg[i] = shuffImg[j];
-       shuffImg[j] = temp;
+   for (i = 0; i <= cardNum; i++) {
+      cards = `${cards}<div class="card" id="c${i}"></div>`;
    }
-   return shuffImg;
+
+   cardP.innerHTML = cards;
+
+   mainMenuSection.style.display = "none";
+   displayGame.style.display = "flex";
+
+
+   attachCardEventListeners();
 
 }
 
 
 // Render Cards on Pexeso Board
 
- /**
-     * Renders the card element using the image name passed as a parameter
-     * @param {String} pexesoImg     //pexesoImg
-     */
+/**
+    * Renders the card element using the image name passed as a parameter
+    * @param {String} pexesoImg     //pexesoImg
+    */
 
-function renderCards(pexesoImg){                          //myCard?
+ function renderCards(pexesoImg) {                          //myCard?
    return `<div class="card">
                     <div class="card-back all-cards">
                         <img class="card-img" src="../../images/pexesoCard.jpg"  alt="Hidden card">
@@ -189,66 +141,78 @@ function renderCards(pexesoImg){                          //myCard?
 
 }
 
-// Append-insert pexeso Images on boar by clicking on the card
-// Duplicate elements of an array
-//render elements in the browser
-//iterate
+// grid....why? do I need grid?
 
-const duplicate = (arr) => {
-	return arr.concat(arr).sort()
-};
+function attachCardEventListeners() {
+   const cards = document.querySelectorAll('.card');       //parameter
+   cards.forEach(card => card.addEventListener('click', (event) => {   //event display card
+      // when card is clicked , code here will run
+      //if card clicked?
+
+      let clicked = event.target
+
+      if(clicked){
+
+      }
+
+      // const image = event.target.getAttribute("data-src");
+      // event.target.setAttribute("src", image);
+      console.log('card clicked was: ', event.target.id)
+   }))
+}
+
+// Shuffle cards before each game
+let shuffImg;
+function shuffleImages() {
+   shuffImg = myCard.slice();
+   let cardNum = 12;
+   if (selectLevel === "easy") {
+      cardNum = 6;
+   } else if (selectLevel === "hard") {
+      cardNum = 10;
+   }
+
+   let i;
+   let j;
+   let temp;
+   for (i = cardNum; i > 0; i--) {
+      j = Math.floor(Math.random() * (i + 1));
+      temp = shuffImg[i];
+      shuffImg[i] = shuffImg[j];
+      shuffImg[j] = temp;
+   }
+   return shuffImg;
+
+}
 
 const addCard = document.getElementById("cards-container");  //DOM
-addCard.addEventListener("click", function(){
-
-   
-   appendCards()
+addCard.addEventListener("click", function () {
 
 });
 
 const cards = myCard
-.concat(myCard);  //concatenating the cards as an array
+   .concat(myCard);  //concatenating the cards as an array
 cards.sort(() => 0.5 - Math.random());
-
-
-
-const appendCards = function(){
-
-   cards.forEach(function(card){
-      console.log(card);
-   })
-      cards.forEach(card => card.addEventListener('click', flippingCards));
-
-   chooseLevel()    //call function for display cards
-}
-
-appendCards()
 
 
 //Flipping my cards
 
 
-function flippingCards(){
+function flippingCards() {
 
    console.log('I was clicked');
    console.log(this);
 
 
-   appendCards()
-
 }
 
 // Check if two cards are a match-> comparing two values in array
 const checkMatch = (myCard) => {
-	if (myCard[0] === myCard[1]) {
-  	console.log("it's a match");
-  	return true;
-  }
+   if (myCard[0] === myCard[1]) {
+      console.log("it's a match");
+      return true;
+   }
 };
-
-
-
-
 
 
 
@@ -258,9 +222,6 @@ const checkMatch = (myCard) => {
 // Add lock to prevent reverse more than 2 cards before check
 // Update turn counter with every two cards reversed
 // Call scoring function to add points when 2 cards match and subtract points when don't
-
- 
-
 
 
 
@@ -294,8 +255,6 @@ const checkMatch = (myCard) => {
 
 
 // Play again when times up
-
-
 
 
 

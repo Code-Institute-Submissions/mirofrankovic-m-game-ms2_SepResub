@@ -161,17 +161,7 @@ h1 li {
 .card:hover {
     border: 3px solid #f73918;
 }
-/* 
-.cardA {
-    width: 23%;
-    height: 115px;
-    margin-left: 2px;
-    margin-right: 3px;
-    border: 3px solid  #f73918;
-    cursor: default;
-    pointer-events: none;
-    display: inline-block;
-} */
+
 
 
 
