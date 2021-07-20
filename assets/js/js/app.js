@@ -75,6 +75,19 @@ back.addEventListener("click", function () {
 function startPexesoGame() {
    mainMenuSection.style.display = "flex";
    displayGame.style.display = "none";
+
+
+   // appendCards();
+}
+
+function appendCards(){
+   const cards = myCard.concat(myCard);
+   const cardsContainer = document.getElementById("cards-container");
+
+   cards.forEach(imageName => {
+      cardsContainer.insertAdjacentHTML("beforeend", renderCards()) //add parameter
+   })
+
 }
 
 
@@ -116,7 +129,7 @@ function chooseLevel(playerLevel) {
    mainMenuSection.style.display = "none";
    displayGame.style.display = "flex";
 
-
+   appendCards();
    attachCardEventListeners();
 
 }
@@ -151,9 +164,7 @@ function attachCardEventListeners() {
 
       let clicked = event.target
 
-      if(clicked){
-
-      }
+      
 
       // const image = event.target.getAttribute("data-src");
       // event.target.setAttribute("src", image);
