@@ -72,6 +72,8 @@ back.addEventListener("click", function () {
 
 // ----------------------- Game start
 
+
+
 function startPexesoGame() {
    mainMenuSection.style.display = "flex";
    displayGame.style.display = "none";
@@ -80,15 +82,6 @@ function startPexesoGame() {
    // appendCards();
 }
 
-function appendCards(){
-   const cards = myCard.concat(myCard);
-   const cardsContainer = document.getElementById("cards-container");
-
-   cards.forEach(imageName => {
-      cardsContainer.insertAdjacentHTML("beforeend", renderCards()) //add parameter
-   })
-
-}
 
 
 // Create cards in game pexeso according to the selected level
@@ -116,7 +109,6 @@ function chooseLevel(playerLevel) {
 
    }
 
-   //shuffle images above
    shuffleImages();
 
    let i;
@@ -124,13 +116,26 @@ function chooseLevel(playerLevel) {
       cards = `${cards}<div class="card" id="c${i}"></div>`;
    }
 
-   cardP.innerHTML = cards;
+   // cardP.innerHTML = cards;
 
    mainMenuSection.style.display = "none";
    displayGame.style.display = "flex";
 
    appendCards();
    attachCardEventListeners();
+
+}
+
+
+function appendCards(){
+   const cards = myCard.concat(myCard);
+   const cardsContainer = document.getElementById("cards-container");
+
+   cards.forEach(imageName => {                                         //conatain the value from array
+      cardsContainer.insertAdjacentHTML("beforeend", renderCards(imageName)) //what add parameter->passing arguments imageName
+
+      // console.log(imageName);
+   }) 
 
 }
 
@@ -154,23 +159,16 @@ function chooseLevel(playerLevel) {
 
 }
 
-// grid....why? do I need grid?
 
 function attachCardEventListeners() {
    const cards = document.querySelectorAll('.card');       //parameter
    cards.forEach(card => card.addEventListener('click', (event) => {   //event display card
-      // when card is clicked , code here will run
-      //if card clicked?
 
-      let clicked = event.target
-
-      
-
-      // const image = event.target.getAttribute("data-src");
-      // event.target.setAttribute("src", image);
       console.log('card clicked was: ', event.target.id)
    }))
 }
+
+
 
 // Shuffle cards before each game
 let shuffImg;
@@ -213,8 +211,6 @@ function flippingCards() {
 
    console.log('I was clicked');
    console.log(this);
-
-
 }
 
 // Check if two cards are a match-> comparing two values in array
