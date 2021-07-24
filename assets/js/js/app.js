@@ -126,17 +126,41 @@ function chooseLevel(playerLevel) {
 
 }
 
+//add parameter cardNum to appendCards to determine how many cards I need to append  => for loop?
 
-function appendCards(){
+
+function appendCards(cardNum){
+
    const cards = myCard.concat(myCard);
    const cardsContainer = document.getElementById("cards-container");
 
-   cards.forEach(imageName => {                                         //conatain the value from array
+
+   if(cardNum === 8){
+      selectLevel = "easy";
+   }else if (cardNum === 16){
+      selectLevel = "hard";
+   }
+
+   cards.forEach((imageName) => {                                         //conatain the value from array
       cardsContainer.insertAdjacentHTML("beforeend", renderCards(imageName)) //what add parameter->passing arguments imageName
 
-      // console.log(imageName);
-   }) 
+      let cardsAppend = Array.from(document.getElementsByClassName("card"));
 
+      cardsAppend.forEach((card) => {
+         card.addEventListener("click", () => {
+             this.turnCard(card);
+         });
+
+      }
+
+      )});
+   }
+
+// To remove cards while doubled when starting level
+
+function clearCards() {
+   let cardsAppend = Array.from(document.getElementsByClassName("card"));
+   cardsAppend.forEach((card) => card.remove());
 }
 
 
@@ -169,9 +193,14 @@ function attachCardEventListeners() {
 }
 
 
+function turnCard(){
+
+}
+
 
 // Shuffle cards before each game
 let shuffImg;
+
 function shuffleImages() {
    shuffImg = myCard.slice();
    let cardNum = 12;
