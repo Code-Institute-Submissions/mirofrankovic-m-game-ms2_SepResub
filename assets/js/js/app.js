@@ -2,7 +2,7 @@
    * Array with image source links to be retrieved and inserted into the HTML when cards are created
    */
 
-const myCard = [
+ const myCards = [
    "img1px.jpg",
    "img2px.jpg",
    "img3px.jpg",
@@ -15,8 +15,27 @@ const myCard = [
 
 
 
-let count = 0;
+//  let count = 0;
+//  let correct_flips = 0;
+//  let last_flipped = [];
 
+let cardsId = [];
+let cardsSelected = [];
+let moves = 0;
+let seconds = 0;
+let minutes = 0;
+
+
+let flipCounter = 0;
+let turnsCounter = 0;
+let countSelected = 0;
+
+let checkCard = null;
+let matchedCards = [];
+let busy = false;
+let fullDeck = [];
+
+const delayBeforeRemovingCards = 100;
 
 // Main menu section
 const mainMenuSection = document.getElementById("main-menu-section");
@@ -24,8 +43,10 @@ const mainMenuSection = document.getElementById("main-menu-section");
 
 // Game display section
 const displayGame = document.getElementById("display-game");
-const cardP = document.getElementById("my-pexeso");
+//  const cardP = document.getElementById("my-pexeso");
 const levelGame = document.querySelector("#chooseLevel span:nth-child(2)");
+const time = document.getElementById("time");
+const counter = document.getElementById("counter");
 const back = document.getElementById("goBack");
 
 
@@ -53,17 +74,6 @@ btnColor.onclick = function () {
 }
 
 
-
-// Highscores modal
-
-// Game win modal
-
-
-// Times up modal
-
-// Clear confirmation modal
-
-
 // ----------------------- Buttons
 // Back to main menu buttons
 back.addEventListener("click", function () {
@@ -77,9 +87,6 @@ back.addEventListener("click", function () {
 function startPexesoGame() {
    mainMenuSection.style.display = "flex";
    displayGame.style.display = "none";
-
-
-   // appendCards();
 }
 
 
@@ -93,68 +100,69 @@ let selectLevel;
 let pairs;
 
 function chooseLevel(playerLevel) {
-   let cards = "";
    let cardNum = 15;
 
    if (playerLevel === "easy") {
       selectLevel = "easy";
-      cardNum = 7;
+      cardNum = 8;
       levelGame.innerHTML = selectLevel;
       pairs = 4;
    } else if (playerLevel === "hard") {
       selectLevel = "hard";
-      cardNum = 15;
+      cardNum = 16;
       levelGame.innerHTML = selectLevel;
       pairs = 8;
-
    }
-
-   shuffleImages();
-
-   let i;
-   for (i = 0; i <= cardNum; i++) {
-      cards = `${cards}<div class="card" id="c${i}"></div>`;
-   }
-
-   // cardP.innerHTML = cards;
 
    mainMenuSection.style.display = "none";
-   displayGame.style.display = "flex";
+   // displayGame.style.display = "flex";
 
-   appendCards();
-   attachCardEventListeners();
+   // We divide the number of card by two in order to create pairs
+   randomCards = shuffleImages(cardNum / 2);
+   appendCards(randomCards);
 
+   //attachCardEventListeners();
 }
 
-//add parameter cardNum to appendCards to determine how many cards I need to append  => for loop?
+function appendCards(randomCards) {
+   const cards = randomCards.concat(randomCards)
 
+   //  const cards = myCard.concat(myCard);
+   const cardsContainer = document.getElementById("grid-container");    //change from cards-container
 
-function appendCards(cardNum){
+   cards.forEach((imageName) => cardsContainer.insertAdjacentHTML("beforeend", renderCard(imageName)));
+   let elements = Array.from(document.getElementsByClassName("card"));
 
-   const cards = myCard.concat(myCard);
-   const cardsContainer = document.getElementById("cards-container");
+   elements.forEach((card) => {                                         
+      card.addEventListener("click", () => {
+         flippingCard(card);
+      });
+   });
 
+   fullDeck = elements;
+}
 
-   if(cardNum === 8){
-      selectLevel = "easy";
-   }else if (cardNum === 16){
-      selectLevel = "hard";
-   }
-
-   cards.forEach((imageName) => {                                         //conatain the value from array
-      cardsContainer.insertAdjacentHTML("beforeend", renderCards(imageName)) //what add parameter->passing arguments imageName
-
-      let cardsAppend = Array.from(document.getElementsByClassName("card"));
-
-      cardsAppend.forEach((card) => {
-         card.addEventListener("click", () => {
-             this.turnCard(card);
-         });
-
+function flippingCard(card) {
+   if (isCardFlipped(card)) {
+      turnsCounter++;
+      card.classList.add('visible');
+      if (checkCard) {
+         checkForMatch(checkCard, card);
+         checkCard = null;
+      } else {
+         checkCard = card;
       }
-
-      )});
    }
+   console.log("Card flipped!");
+}
+
+function isCardFlipped(card) {
+   console.log('Check if card is flipped!');
+   return (
+      !busy && !matchedCards.includes(card) && card !== checkCard
+  );
+}
+
 
 // To remove cards while doubled when starting level
 
@@ -167,80 +175,92 @@ function clearCards() {
 // Render Cards on Pexeso Board
 
 /**
-    * Renders the card element using the image name passed as a parameter
-    * @param {String} pexesoImg     //pexesoImg
-    */
-
- function renderCards(pexesoImg) {                          //myCard?
+ * Renders the card element using the image name passed as a parameter
+ * @param {String} pexesoImg
+ */
+function renderCard(pexesoImg) {                          //myCard?      // id="grid-container" ?
    return `<div class="card">
-                    <div class="card-back all-cards">
-                        <img class="card-img" src="../../images/pexesoCard.jpg"  alt="Hidden card">
-                    </div> 
-                    <div class="card-picture all-cards">
-                        <img class="card-value card-img" src="assets/images/${pexesoImg}" alt="Picture card">
-                    </div>
-                </div>`;
-
+               <div class="card-back all-cards">
+                     <img class="card-img" src="assets/images/pexesoCard.jpg"  alt="Hidden card">
+               </div> 
+               <div class="card-picture all-cards">
+                     <img class="card-value card-img" src="assets/images/${pexesoImg}" alt="Picture card">
+               </div>
+          </div>`;
 }
 
 
-function attachCardEventListeners() {
-   const cards = document.querySelectorAll('.card');       //parameter
-   cards.forEach(card => card.addEventListener('click', (event) => {   //event display card
+// function attachCardEventListeners() {
 
-      console.log('card clicked was: ', event.target.id)
-   }))
+//    // Images are the ones that need to change visibility
+//    const images = document.querySelectorAll('.card-picture');
+
+//    // Card need to be clicked
+//    const cards = document.querySelectorAll('.card');
+
+//    images.forEach(cardImage => cardImage.classList.add('flip')); //("flip-card")
+//    cards.forEach(card => card.addEventListener('click', function (event) {
+
+//       showCard(this);
+
+//       console.log('card clicked was: ', event.target)  //event.target.id
+//    }))
+// }
+
+function showCard(event, card) {
+   // This can be done with toggle of the class as per another answer
+   card.classList.toggle("flip"); //("flip-card")
+   // this.classList.remove('flip');
+   card.style.visibility = 'visible';
+
+   event.target.classList.add("flip");  //("flip-card")
 }
 
+// Check cards if they match
 
-function turnCard(){
-
-}
-
-
-// Shuffle cards before each game
-let shuffImg;
-
-function shuffleImages() {
-   shuffImg = myCard.slice();
-   let cardNum = 12;
-   if (selectLevel === "easy") {
-      cardNum = 6;
-   } else if (selectLevel === "hard") {
-      cardNum = 10;
+function checkForMatch(card1, card2) {
+   console.log('Check for a match');
+   if (checkCardType(card1) === checkCardType(card2)) {
+      cardMatcher(card1, card2);
+   } else {
+      notAMatch(card1, card2);
    }
+}
 
-   let i;
-   let j;
-   let temp;
-   for (i = cardNum; i > 0; i--) {
-      j = Math.floor(Math.random() * (i + 1));
-      temp = shuffImg[i];
-      shuffImg[i] = shuffImg[j];
-      shuffImg[j] = temp;
+function cardMatcher(card1, card2) {
+   // Adds the cards to the matchedCards array to track progress
+   matchedCards.push(card1);
+   matchedCards.push(card2);
+   setTimeout(() => {
+       card1.classList.add("invisible");
+       card2.classList.add("invisible");
+   }, delayBeforeRemovingCards);
+   //checkCard = null;
+   // Ends the game when all cards have been matched
+   if (matchedCards.length === fullDeck.length) {
+       gameWin();
    }
-   return shuffImg;
-
 }
 
-const addCard = document.getElementById("cards-container");  //DOM
-addCard.addEventListener("click", function () {
-
-});
-
-const cards = myCard
-   .concat(myCard);  //concatenating the cards as an array
-cards.sort(() => 0.5 - Math.random());
-
-
-//Flipping my cards
-
-
-function flippingCards() {
-
-   console.log('I was clicked');
-   console.log(this);
+function notAMatch(card1, card2) {
+   busy = true;
+   setTimeout(() => {
+       card1.classList.remove("visible");
+       card2.classList.remove("visible");
+       busy = false;
+   }, 500);
 }
+
+
+function checkCardType(card) {
+   return card.getElementsByClassName("card-value")[0].src;
+}
+
+
+function gameWin() {
+   console.log('Game Win!');
+}
+
 
 // Check if two cards are a match-> comparing two values in array
 const checkMatch = (myCard) => {
@@ -251,52 +271,13 @@ const checkMatch = (myCard) => {
 };
 
 
-
-// Add figure on the other side of card
-// Check if one or two cards reversed
-// Check if two cards are the same
-// Add lock to prevent reverse more than 2 cards before check
-// Update turn counter with every two cards reversed
-// Call scoring function to add points when 2 cards match and subtract points when don't
-
-
-
-
-// When 2 reversed cards match keep them on board
-// Remove lock
-// Update pairs variable and if 0 clear time interval
-// Play finish audio when all pairs reversed
-
-
-
-
-
-// When 2 reversed cards do not match restore them
-// Remove lock
-
-
-
-
-// Game timer
-// Set interval
-// Clear interval when times up or quit button hit
-// Show times up modal when time = 0
-
-
-
-
-// Score system
-// Show game win modal when all pairs match
-
-
-
-// Play again when times up
-
-
-
-// Save score to local storage
-// Show score in highscores modal
-
-
-
-// console.log("hallo there is miro");
+function shuffleImages(cardNum) {
+   const shuffImg = myCards.slice(0, cardNum);
+   for (let i = cardNum-1; i > 0; i--) {
+      let j = Math.floor(Math.random() * (i + 1));
+      let temp = shuffImg[i];
+      shuffImg[i] = shuffImg[j];
+      shuffImg[j] = temp;
+   }
+   return shuffImg;
+}
