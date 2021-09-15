@@ -132,7 +132,7 @@ h1 li {
 
  #display-game{
      /* background-color: #ddce49; */
-     display:flex;
+     display:none;
  } 
 
  #buttonColor{

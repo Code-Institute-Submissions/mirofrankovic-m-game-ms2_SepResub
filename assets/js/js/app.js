@@ -115,7 +115,7 @@ function chooseLevel(playerLevel) {
    }
 
    mainMenuSection.style.display = "none";
-   // displayGame.style.display = "flex";
+   displayGame.style.display = "flex";
 
    // We divide the number of card by two in order to create pairs
    randomCards = shuffleImages(cardNum / 2);
