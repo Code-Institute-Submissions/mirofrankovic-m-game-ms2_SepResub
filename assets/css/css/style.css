@@ -188,26 +188,6 @@ h1 li {
     max-width: 100px; 
     max-height: 100px;
 }
-/* 
-.board-grid {
-    display: grid;
-    grid-template-columns: repeat(4, auto);
-    grid-gap: 10px;
-    margin: 10%;
-    justify-content: center;
-    perspective: 500px;
-} */
-/* 
-.grid-container{
-    display: grid;
-    grid-template-columns: repeat(4, auto);
-    grid-gap: 10px;
-    margin: 10%;
-    justify-content: center;
-    perspective: 500px;
-
-} */
-
 
 #grid-container {
     display: grid;
@@ -219,7 +199,6 @@ h1 li {
     max-width: 100vh;
     max-height: calc(54vh + 10%);
 }
-
 
 .card {
 height: 13vh;

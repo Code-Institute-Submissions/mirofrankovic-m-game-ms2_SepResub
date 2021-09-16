@@ -11,10 +11,6 @@ This is a simple Memory Game Web Application created for my second Milestone pro
 The goal of this challenge is to match all the cards in as little time as possible, making the fewest selections possible.
 
 
-
-
-
-
 ## UX
 
 **STRATEGY**

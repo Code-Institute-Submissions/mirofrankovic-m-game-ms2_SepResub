@@ -14,17 +14,11 @@
 ];
 
 
-
-//  let count = 0;
-//  let correct_flips = 0;
-//  let last_flipped = [];
-
 let cardsId = [];
 let cardsSelected = [];
 let moves = 0;
 let seconds = 0;
 let minutes = 0;
-
 
 let flipCounter = 0;
 let turnsCounter = 0;
@@ -43,9 +37,8 @@ const mainMenuSection = document.getElementById("main-menu-section");
 
 // Game display section
 const displayGame = document.getElementById("display-game");
-//  const cardP = document.getElementById("my-pexeso");
 const levelGame = document.querySelector("#chooseLevel span:nth-child(2)");
-const time = document.getElementById("time");
+const timeCount = document.getElementById("time");
 const counter = document.getElementById("counter");
 const back = document.getElementById("goBack");
 
@@ -82,22 +75,14 @@ back.addEventListener("click", function () {
 
 // ----------------------- Game start
 
-
-
 function startPexesoGame() {
    mainMenuSection.style.display = "flex";
    displayGame.style.display = "none";
 }
 
-
-
-// Create cards in game pexeso according to the selected level
-// Hide main menu section and show game arena section
-// Set and display points, level, timer, turn counter in their starting values
-// Call functions to shuffle cards, start timer and active score system
-
 let selectLevel;
 let pairs;
+let time;
 
 function chooseLevel(playerLevel) {
    let cardNum = 15;
@@ -121,7 +106,12 @@ function chooseLevel(playerLevel) {
    randomCards = shuffleImages(cardNum / 2);
    appendCards(randomCards);
 
-   //attachCardEventListeners();
+   time = 60;
+   timeCount.innerHTML = time;
+
+   timerStart();
+
+
 }
 
 function appendCards(randomCards) {
@@ -163,7 +153,6 @@ function isCardFlipped(card) {
   );
 }
 
-
 // To remove cards while doubled when starting level
 
 function clearCards() {
@@ -171,14 +160,13 @@ function clearCards() {
    cardsAppend.forEach((card) => card.remove());
 }
 
-
 // Render Cards on Pexeso Board
 
 /**
  * Renders the card element using the image name passed as a parameter
  * @param {String} pexesoImg
  */
-function renderCard(pexesoImg) {                          //myCard?      // id="grid-container" ?
+function renderCard(pexesoImg) {                          
    return `<div class="card">
                <div class="card-back all-cards">
                      <img class="card-img" src="assets/images/pexesoCard.jpg"  alt="Hidden card">
@@ -188,24 +176,6 @@ function renderCard(pexesoImg) {                          //myCard?      // id="
                </div>
           </div>`;
 }
-
-
-// function attachCardEventListeners() {
-
-//    // Images are the ones that need to change visibility
-//    const images = document.querySelectorAll('.card-picture');
-
-//    // Card need to be clicked
-//    const cards = document.querySelectorAll('.card');
-
-//    images.forEach(cardImage => cardImage.classList.add('flip')); //("flip-card")
-//    cards.forEach(card => card.addEventListener('click', function (event) {
-
-//       showCard(this);
-
-//       console.log('card clicked was: ', event.target)  //event.target.id
-//    }))
-// }
 
 function showCard(event, card) {
    // This can be done with toggle of the class as per another answer
@@ -256,11 +226,9 @@ function checkCardType(card) {
    return card.getElementsByClassName("card-value")[0].src;
 }
 
-
 function gameWin() {
    console.log('Game Win!');
 }
-
 
 // Check if two cards are a match-> comparing two values in array
 const checkMatch = (myCard) => {
@@ -280,4 +248,16 @@ function shuffleImages(cardNum) {
       shuffImg[j] = temp;
    }
    return shuffImg;
+}
+
+
+let countDown;
+function timerStart() {
+    countDown = setInterval(myTimer, 1000);
+}
+
+function myTimer(){
+   time--;
+   timeCount.innerHTML = time;
+
 }
