@@ -88,6 +88,9 @@ The goal of this challenge is to match all the cards in as little time as possib
 
 **Sceleton** 
 
+* [Wireframes]
+(![titlePexeso](https://user-images.githubusercontent.com/28025554/133854242-7c071d1e-75ed-4295-ac25-e830a6c95183.PNG))
+
 
 **Surface**
 
