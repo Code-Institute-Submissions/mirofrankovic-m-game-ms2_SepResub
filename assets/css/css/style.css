@@ -34,7 +34,7 @@ body {
     background-color: #0000004d;
 }
 
-h1 {
+.my-hello{
     color:#000;
     text-shadow: #ffffff -1px 0px, #ffffff 0px 1px, #ffffff 1px 0px, #ffffff 0px -1px;
     position: absolute;
@@ -233,7 +233,17 @@ max-width: unset;
     justify-content: center;
     max-width: 100vh;
     max-height: calc(54vh + 10%);
-}    
+}  
+.my-hello{
+    color:#000;
+    text-shadow: #ffffff -1px 0px, #ffffff 0px 1px, #ffffff 1px 0px, #ffffff 0px -1px;
+    position: absolute;
+    font-size: 2rem;
+    text-align: center;
+    top:15%;
+    left:15%;
+    display:none;
+}  
 
 }
 
@@ -254,5 +264,16 @@ max-width: unset;
     max-width: unset;
     max-height: unset;
     }
+    .my-hello{
+        color:#000;
+        text-shadow: #ffffff -1px 0px, #ffffff 0px 1px, #ffffff 1px 0px, #ffffff 0px -1px;
+        position: absolute;
+        font-size: 2rem;
+        text-align: center;
+        top:15%;
+        left:15%;
+        display:none;
+    }  
+    
 
 }
