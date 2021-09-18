@@ -1,4 +1,4 @@
-![mypexeso](https://user-images.githubusercontent.com/28025554/133905617-65c73aef-64d4-4eb9-855c-b1f5f53ecb3c.PNG)
+![myPexeso](https://user-images.githubusercontent.com/28025554/133909789-0129cb86-baff-478d-93d9-27eb4afe78e2.PNG)
 # Pexeso - Memory Game
 
 ## Code Institute MS2 Project in Interactive Frontend Development
