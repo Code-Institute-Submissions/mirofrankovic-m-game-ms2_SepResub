@@ -182,5 +182,6 @@ The source for my website I was using from credible website such as [Pexeso](htt
 ## Content
 
 By pressing the **Credits** button on the start game screen you will be able to see the content of my project.
-![content](https://user-images.githubusercontent.com/28025554/133908513-841d52e2-1cf2-48b6-89fc-b8c18beb919f.PNG)
+![contentG](https://user-images.githubusercontent.com/28025554/133909940-9f503b18-b2e8-430a-b385-1aee74ed9861.PNG)
+
 
