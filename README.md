@@ -11,7 +11,6 @@ This is a simple Memory Game Web Application created for my second Milestone pro
 
 The goal of this challenge is to match all the cards in as little time as possible, making the fewest selections possible.
 
-
 ## UX
 
 **STRATEGY**
@@ -56,12 +55,11 @@ The goal of this challenge is to match all the cards in as little time as possib
 
 6. As a player, I want a fun game that will attract my kids to play and help with their memory skills.
 
-* Game has a Lego theme so the kids will love to play. It also has difficulty levels so will suit all ages.
+* Game has a toys theme so the kids will love to play. It also has difficulty levels so will suit all ages.
 
 7. As a player, I want to play the game that me remind me the old fashion memory game called "pexeso".
 
 * Game has the old fashion images of the original "pexeso" images specially designed for older generation players.
-
 
 **New users**
 
@@ -92,6 +90,8 @@ The goal of this challenge is to match all the cards in as little time as possib
 
 **Sceleton** 
 ![titlePexeso](https://user-images.githubusercontent.com/28025554/133854242-7c071d1e-75ed-4295-ac25-e830a6c95183.PNG)
+For the easy level looks my game board.
+![flipCard](https://user-images.githubusercontent.com/28025554/133940963-3d807d84-b858-4a72-a637-f33e94ee4438.PNG)
 
 **Surface**
 
@@ -104,10 +104,8 @@ The look and feel of Pexeso was inspired by a classic game with retro style card
 **Start Game Screen**: This is the first screen presented to the user. The user is prompted (with onscreen text instructions) and then click the 'Play!' button to start the game.
 ![gametitle](https://user-images.githubusercontent.com/28025554/133905477-9b0af47a-bb55-4ac6-93ce-021c3f3d2bd2.PNG)
 
-
 **Main Game Board**: The gameboard displays 16 cards for hard level or 8 cards for easy level (with the backs of the cards visible to the user). The game timer on the top left of the gameboard counts down from 60 seconds. When the user clicks on a card, the card turns and the picture side of the card is presented.
 ![gameboard](https://user-images.githubusercontent.com/28025554/133905148-a36dfb55-e717-4b03-b339-767f8fdcd3a5.PNG)
-
 
 ## TECHNOLOGIES USED
 
