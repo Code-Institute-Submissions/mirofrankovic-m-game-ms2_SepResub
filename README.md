@@ -136,7 +136,10 @@ In the construction of this project I have utilised the following languages, fra
 **VALIDATION**
 
 I used the [W3C Markup Validation Service](https://validator.w3.org/) to check the [Markup and W3C CSS Validation Service](https://jigsaw.w3.org/css-validator/) to check the CSS validity of the site.
+![ValidatorHTML](https://user-images.githubusercontent.com/28025554/133939326-4955267d-2a9b-485b-a058-d9b9840598af.PNG)
 
+Fix Markup and W3C CSS Validation Service.
+![noerrors](https://user-images.githubusercontent.com/28025554/133939366-999a9fad-2fde-401d-ad1d-f0bf60badff8.PNG)
 
 * I constantly tested the code in [Chrome Dev Tools](https://developer.chrome.com/docs/) and often ran Lighthouse audits to identify and fix issues that affected the site's performance, accessibility and user experience.
 ![devtools](https://user-images.githubusercontent.com/28025554/133907184-01b38238-b559-44e3-a2be-ae34663da139.PNG)

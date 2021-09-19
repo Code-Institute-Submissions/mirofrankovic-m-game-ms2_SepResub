@@ -110,8 +110,6 @@ function chooseLevel(playerLevel) {
    timeCount.innerHTML = time;
 
    timerStart();
-
-
 }
 
 function appendCards(randomCards) {
@@ -153,7 +151,6 @@ function isCardFlipped(card) {
   );
 }
 
-// To remove cards while doubled when starting level
 
 function clearCards() {
    let cardsAppend = Array.from(document.getElementsByClassName("card"));
