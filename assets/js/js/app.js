@@ -13,17 +13,7 @@
    "img8px.jpg",
 ];
 
-
-let cardsId = [];
-let cardsSelected = [];
-let moves = 0;
-let seconds = 0;
-let minutes = 0;
-
-let flipCounter = 0;
 let turnsCounter = 0;
-let countSelected = 0;
-
 let checkCard = null;
 let matchedCards = [];
 let busy = false;
@@ -64,7 +54,7 @@ function random(number) {
 btnColor.onclick = function () {
    const rndCol = 'rgb(' + random(255) + ',' + random(255) + ',' + random(255) + ')';
    document.body.style.backgroundColor = rndCol;
-}
+};
 
 
 // ----------------------- Buttons
@@ -113,7 +103,7 @@ function chooseLevel(playerLevel) {
 }
 
 function appendCards(randomCards) {
-   const cards = randomCards.concat(randomCards)
+   const cards = randomCards.concat(randomCards);
 
    //  const cards = myCard.concat(myCard);
    const cardsContainer = document.getElementById("grid-container");    //change from cards-container
@@ -151,12 +141,6 @@ function isCardFlipped(card) {
   );
 }
 
-
-function clearCards() {
-   let cardsAppend = Array.from(document.getElementsByClassName("card"));
-   cardsAppend.forEach((card) => card.remove());
-}
-
 // Render Cards on Pexeso Board
 
 /**
@@ -176,11 +160,10 @@ function renderCard(pexesoImg) {
 
 function showCard(event, card) {
    // This can be done with toggle of the class as per another answer
-   card.classList.toggle("flip"); //("flip-card")
-   // this.classList.remove('flip');
+   card.classList.toggle("flip"); 
    card.style.visibility = 'visible';
 
-   event.target.classList.add("flip");  //("flip-card")
+   event.target.classList.add("flip");  
 }
 
 // Check cards if they match
